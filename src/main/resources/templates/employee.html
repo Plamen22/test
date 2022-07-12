@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-bordered table-dark" th:if="${employees.size() >= 0}">
+    <th>Id</th>
+    <th>Name</th>
+    <th>Salary</th>
+    <th>Contract id</th>
+    <th>Created at</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    <a href="/web/employees/create">
+        <input type="button" value="Add an employee"/>
+    </a>
+
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.id}"></td>
+        <td th:text="${employee.name}"></td>
+        <td th:text="${employee.salary}"></td>
+        <td th:text="${employee.contractId}"></td>
+        <td th:text="${employee.createdAt}"></td>
+        <td><a class="btn btn-info" th:href="@{'/web/employees/' + ${employee.id}}">Edit</a></td>
+        <td><a class="btn btn-danger" th:href="@{'/web/employees/delete/' + ${employee.id}}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<header th:replace="fragments :: header"></header>
+    <div class="col-6">
+        <form action="#" th:action="@{/web/employees/update/{id}(id=${employee.id})}" th:object="${employee}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" th:field="*{name}" id="name">
+                <th/>
+                <label for="salary">Salary</label>
+                <input class="form-control" type="text" th:field="*{salary}" id="salary">
+                <th/>
+                <label for="contractId">Contract Id</label>
+                <input class="form-control" type="text" th:field="*{contractId}" id="contractId">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+</body>
+</html>
